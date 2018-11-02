@@ -38,6 +38,9 @@
                             <a href="/browse" data-theme="b" data-icon="search" data-ajax="false"> Browse Media </a>
                         </li>
                         <li>
+                            <a href="/playlist" data-theme="b" data-icon="search" data-ajax="false"> Load Playlist </a>
+                        </li>
+                        <li>
                             <a href="/config" data-theme="b" data-icon="gear" data-ajax="false"> Configuration </a>
                         </li>
                     </ul>
@@ -135,14 +138,18 @@
                     $.ajax({
                         type: 'POST',
                         url: '/ajax/previous',
-                        data: {}
+                        data: {
+                            file: 'previous'
+                        }
                     })
                 });
-                $("input#pnext").bind('click', function(event, ui) {
+                $("input#next").bind('click', function(event, ui) {
                     $.ajax({
                         type: 'POST',
                         url: '/ajax/next',
-                        data: {}
+                        data: {
+                            file: 'next'
+                        }
                     })
                 });
             });

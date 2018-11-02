@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 	"path"
-	"path/filepath"
+//	"path/filepath"
 	"sort"
 	"strings"
 )
@@ -82,10 +82,10 @@ func getDirectoryList(requestPath string) (DirListData, error) {
 			dld.Directories = append(dld.Directories, fi.Name())
 		} else {
 			// only allow certain kind of extensions.
-			extension := strings.ToLower(filepath.Ext(fi.Name()))
-			if extensionsVideo[extension] || extensionsAudio[extension] {
-				dld.Files = append(dld.Files, fi.Name())
-			}
+			//extension := strings.ToLower(filepath.Ext(fi.Name()))
+			//if extensionsVideo[extension] || extensionsAudio[extension] {
+			dld.Files = append(dld.Files, fi.Name())
+			//}
 		}
 	}
 

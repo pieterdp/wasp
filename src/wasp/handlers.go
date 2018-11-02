@@ -61,9 +61,11 @@ func registerHttpHandlers(handler *RegexHandler) {
 	// regular handlers:
 	handler.HandleFunc("^/$", handlerIndex)
 	handler.HandleFunc("^/browse.*$", handlerBrowse)
+	handler.HandleFunc("^/playlist.*$", handlerBrowsePlaylist)
 	handler.HandleFunc("^/config$", handlerConfig)
 
 	handler.HandleFunc("^/ajax/play", handlerPlay)
+	handler.HandleFunc("^/ajax/list", handlerPlaylist)
 	handler.HandleFunc("^/ajax/stop", handlerStop)
 	handler.HandleFunc("^/ajax/pause", handlerPause)
 	handler.HandleFunc("^/ajax/volume", handlerVolume)

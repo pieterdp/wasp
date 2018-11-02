@@ -30,6 +30,26 @@ func handlerPlay(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Playing '%s'", file)
 }
 
+// Handles the /ajax/list URI
+func handlerPlaylist(w http.ResponseWriter, r *http.Request) {
+	file := r.FormValue("playlist")
+	if file == "" {
+		http.Error(w, "Playlist is empty", http.StatusBadRequest)
+		return
+	}
+
+	mediadir := properties.GetString(PROPERTY_MEDIA_DIR, "/")
+	file = filepath.Join(mediadir, file)
+
+	err := mpl.Loadlist(file)
+	if err != nil {
+		log.Printf("Unable to load playlist '%s'. Error is: %s", file, err)
+		return
+	}
+
+	log.Printf("Playing playlist '%s'", file)
+}
+
 // Handles the /ajax/pause URI. No form, POST or GET value is used, it's just simply
 // pause, or unpause.
 func handlerPause(w http.ResponseWriter, r *http.Request) {

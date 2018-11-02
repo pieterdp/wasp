@@ -8,6 +8,7 @@ import (
 
 var templateIndex = template.Must(template.ParseFiles("./site/templates/index.html"))
 var templateBrowse = template.Must(template.ParseFiles("./site/templates/browse.html"))
+var templatePlaylist = template.Must(template.ParseFiles("./site/templates/browse_playlist.html"))
 var templateConfig = template.Must(template.ParseFiles("./site/templates/config.html"))
 
 //==============================================================================
@@ -26,6 +27,17 @@ func handlerBrowse(w http.ResponseWriter, r *http.Request) {
 	dld, _ := getDirectoryList(requestPath)
 	templateBrowse.Execute(w, dld)
 }
+
+//================================================================================
+
+func handlerBrowsePlaylist(w http.ResponseWriter, r *http.Request) {
+	values := r.URL.Query()
+	requestPath := values.Get("p")
+
+	dld, _ := getDirectoryList(requestPath)
+	templatePlaylist.Execute(w, dld)
+}
+
 
 //================================================================================
 

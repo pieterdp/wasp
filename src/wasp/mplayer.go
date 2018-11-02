@@ -141,13 +141,13 @@ func (m *Mplayer) Stop() (err error) {
 
 func (m *Mplayer) Previous() (err error) {
 	// key_down_event
-	return m.sendCommand(fmt.Sprintf("pt_step 1\n"))
+	return m.sendCommand(fmt.Sprintf("pt_step -1\n"))
 }
 
 
 func (m *Mplayer) Next() (err error) {
 	// key_down_event
-	return m.sendCommand(fmt.Sprintf("pt_step -1\n"))
+	return m.sendCommand(fmt.Sprintf("pt_step 1\n"))
 }
 
 // Seeks in the current file in a relative manner. When seconds is negative,
