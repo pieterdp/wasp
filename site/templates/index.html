@@ -55,12 +55,14 @@
                 </fieldset>
 
                 <div data-role="controlgroup" data-type="horizontal" data-mini="false" class="centered">
+                    <input id="previous" type="button" value="|<" /> <!-- Previous item in playlist -->
                     <input id="seek" data-val="-300" type="button" value="<<<"/> <!-- backward 5 mins -->
                     <input id="seek" data-val="-60" type="button" value="<<"/>   <!-- backward 1 min  -->
                     <input id="seek" data-val="-10" type="button" value="<"/>    <!-- backward 10 sec -->
                     <input id="seek" data-val="10" type="button" value=">"/>     <!-- forward 10 sec  -->
                     <input id="seek" data-val="60" type="button" value=">>"/>    <!-- forward 1 min   -->
                     <input id="seek" data-val="300" type="button" value=">>>"/>  <!-- forward 5 mins  -->
+                    <input id="next" type="button" value=">|" /> <!-- Next item in playlist -->
                 </div>
 
                 <div data-role="fieldcontain" class="mute-ctrl">
@@ -128,6 +130,20 @@
                             seek: value
                         }
                     });
+                });
+                $("input#previous").bind('click', function(event, ui) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/ajax/previous',
+                        data: {}
+                    })
+                });
+                $("input#pnext").bind('click', function(event, ui) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/ajax/next',
+                        data: {}
+                    })
                 });
             });
         </script>

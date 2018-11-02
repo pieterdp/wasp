@@ -96,6 +96,18 @@ func handlerSeek(w http.ResponseWriter, r *http.Request) {
 	mpl.SeekRelative(int16(val))
 }
 
+// Handles /ajax/previous
+func handlerPrevious(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Loading previous item in playlist.")
+	mpl.Previous();
+}
+
+// Handles /ajax/next
+func handlerNext(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Loading next item in playlist.")
+	mpl.Next();
+}
+
 // Handles the /ajax/get_status URI. A JSON object with information of the 
 // currently playing file, set volume, whether it's muted, and all that jazz.
 func handlerGetStatus(w http.ResponseWriter, r *http.Request) {
