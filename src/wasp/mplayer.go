@@ -103,6 +103,12 @@ func (m *Mplayer) Loadfile(file string) (err error) {
 	return m.sendCommand(fmt.Sprintf("loadfile \"%s\"\n", file))
 }
 
+// Load playlist
+func (m *Mplayer) Loadlist(file string) (err error) {
+	m.File = file
+	return m.sendCommand(fmt.Sprintf("loadlist \"%s\"\n", file))
+}
+
 // Toggles sound on/off.
 //
 // Mplayer slave command: mute\n
